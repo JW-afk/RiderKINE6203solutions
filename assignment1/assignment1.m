@@ -35,11 +35,12 @@ helpURL = 'https://www.mathworks.com/help/matlab/';
 % numbers [1 7 21 32 67 32453]? Store your answer in a variable called
 % averageAnswer.
 
-averageAnswer = mean (1 7 21 32,67,32453)
+A = [ 1 7 21 32 67 32453]
+avrageAnswer = mean(A)
 
 % 4. What command would you type to see a list of all installed toolboxes?
 
-        %<- command goes here
+        %<- ver
 
 % 5. Write some commands that would return a list of all of the available 
 % functions in the image processing toolbox? 
@@ -53,7 +54,7 @@ x = linspace(-2*pi,2*pi);
 y = sin(x);
 
 figure
-        %<- command goes here
+        plot (x,y)
 
         
 
@@ -62,14 +63,17 @@ figure
 % this function do and how would you use it?
 
 %
-% Answer: 
-%
+% Answer: ttest function runs a t test comparing the mean of 2 data sets.
+% would need to use it if i was comparing the mean of 2 groups doing the
+% same movements.
 
 % 8. What are the 2 major types of loops that MATLAB supports? What is the
 % difference between them?
 
 %
-% Answer: 
+% Answer: The two major loop types are While loops and for loops. while
+% loops primariraly are used to validate input while for loops primarily
+% deal with vectors. 
 % 
 
 
@@ -77,7 +81,8 @@ figure
 % an answer. 
 
 %
-% Answer: 
+% Answer: NaN stands for not a number and you would get NaN as an answer if
+% you divide zero by zero
 %
 
 
@@ -88,12 +93,12 @@ figure
 
 A = [1 2 3 2 1 NaN 1 2 3 NaN];
 S = sum(A)
-
+% You would change S = sum(A) to S = sum(A,"omitnan") to correct the error.
 
 % 11. I used to love playing the game minesweeper. Is there a way that I
 % could play a similar game on Matlab? Write the command that would launch
 % the game if so. 
-
+xpbombs
 
 
 
@@ -101,14 +106,15 @@ S = sum(A)
 % create a new variable called ageLessTwo and subtract two from the value of the
 % myAge variable. Create a third variable called agePlusOne and add one to 
 % the value of the myAge variable.
-
-
+myAge=24
+ageLessTwo = myAge-2
+agePlusOne = myAge+1
 
 % 13. Use the built-in function namelengthmax to find out the maximum number of
 % characters that you can have in an identifier name under your version of
 % MATLAB. Assign the value to a variable called maxNameLength.
 
-
+maxNameLength = 63
 
 
 % 14. You need to convert some weight values from metric to standard units. 
@@ -119,25 +125,81 @@ S = sum(A)
 originalWeightkg = 100;
 % Add your code on the next line
 
+origonalWeightkg = 100;
+origonalWeightlbs = origonalWeightkg*2.205;
+origonalWeightoz = origonalWeightlbs*16;
+who
+
+Your variables are:
+
+origonalWeightkg   origonalWeightlbs  origonalWeightoz   
+
+whos
+  Name                   Size            Bytes  Class     Attributes
+
+  origonalWeightkg       1x1                 8  double              
+  origonalWeightlbs      1x1                 8  double              
+  origonalWeightoz       1x1                 8  double              
+
+clear origonalWeightkg
+who
+
+Your variables are:
+
+origonalWeightlbs  origonalWeightoz   
+
+whos
+  Name                   Size            Bytes  Class     Attributes
+
+  origonalWeightlbs      1x1                 8  double              
+  origonalWeightoz       1x1                 8  double              
 
 
 % 15. Assign a number with a decimal place to an appropriately named variable. Convert the
 % variable to the type int32 and store the result in a new variable (hint: this is known
 % as casting in computer programming). Use whos to check your result. 
+> question15Variable = 5.5
+
+question15Variable =
+
+    5.5000
+
+y = int32(question15Variable)
+
+y =
+
+  int32
+
+   6
+
+whos y
+  Name      Size            Bytes  Class    Attributes
+
+  y         1x1                 4  int32     
 
 
 
 
 % 16. Create a variable called weightInLBs to store a weight in pounds. Convert this to 
 % kilograms using an appropriate calculation or function and assign the result to a variable weightInKgs.
+weightInLBs = 200;
+weightInKgs = weightInLBs/2.205
 
+weightInKgs =
+
+   90.7029
 
 
 
 % 18. Create a variable fTemp to store a temperature in degrees Fahrenheit (F). 
 % Convert this to degrees Celsius (C) using an appropriate 
 % calculation and store the result in a variable cTemp.
+fTemp = 100;
+cTemp = (fTemp-32)*(5/9)
 
+cTemp =
+
+   37.7778
 
 
 
@@ -146,7 +208,9 @@ originalWeightkg = 100;
 % 1.1000 1.3000 1.5000 1.7000 
 % 8 6 4 2
 % Store your results with variable names vecA, vecB and vecC respectively.
-
+vecA = 2:3:4:5:6:7;
+vecB = 1.1000:1.3000:1.5000:1.7000;
+vecC = 8:6:4:2;
 
 
 
@@ -154,6 +218,8 @@ originalWeightkg = 100;
 % (assigned to a variable called vec) of 50 elements that range, equally spaced, 
 % from 0 to 2pi. 
 
+x = linspace(0,2*pi,50);
+vec = x;
 
 
 
@@ -170,27 +236,71 @@ originalWeightkg = 100;
 % dimensions given by the values of rows and cols. The resultMat should
 % change each time you execute your code. 
 
+rows=randi(5,1);
+cols=randi(5,1);
+resultMat=randi(rows,cols)
 
+resultMat =
+
+     1     3     1
+     2     1     2
+     1     2     1
+
+resultMat=randi(rows,cols)
+
+resultMat =
+
+     2     2     3
+     3     1     1
+     3     1     3
 
 
 % 23. Create a vector of five random integers, each in the inclusive range 
 % from -10 to 10 assigned to a variable named originalVec. Perform each of 
 % the following on the original vector and store your results in appropriately 
 % named variables. (you should have a seperate line of code for each)
+> originalVec=r
 
+originalVec =
+
+    0.7668
+    9.9227
+   -8.4365
+   -1.1464
+   -7.8669
 % - subtract 3 from each element
+threeLessOriginalVec=r-3
+threeLessOriginalVec =
 
+   -2.2332
+    6.9227
+  -11.4365
+   -4.1464
+  -10.8669
 
 % - count how many are positive
-
+1
 
 % - get the absolute value of each element
 
+ absoluteValueThreeLessOriginal= abs(threeLessOriginalVec)
+
+absoluteValueThreeLessOriginal =
+
+    2.2332
+    6.9227
+   11.4365
+    4.1464
+   10.8669
 
 
 % - find the maximum.
 
+maxThreeLessOriginal= max(threeLessOriginalVec)
 
+maxThreeLessOriginal =
+
+    6.9227
 
 % 24. Write some code that will calculate the area of a trapezoid. Create
 % variables for base1, base2, and height and assign them values. Store the
@@ -198,7 +308,16 @@ originalWeightkg = 100;
 % code so that another user can understand what your code does. 
 
 
+%First enter the values for your variables
+base1 = 5;
+base2 = 9;
+height = 20;
+%use your variables to calculate area of trapizod 
+trapArea = ((base1+base2)/2)*height
 
+trapArea =
+
+   140
 
 
 % 25. In sports marketing and other areas of sports management, 
@@ -226,7 +345,14 @@ originalWeightkg = 100;
 
 %%% Enter the code for your program below this line
 
+x='Hello World'
 
+x =
+
+    'Hello World'
+
+disp(x)
+Hello World
 
 
 
